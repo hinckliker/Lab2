@@ -39,7 +39,7 @@ class CustomerController extends Controller
 
     public function currentCustomer($id){
         $customer = Customer::where('id','=',$id)->get();
-        $addreses = Addres::where('customer_id','=',$id)->get();
+        $addreses = Addres::where('customer_id','=',$id)->orderBy('created_at','desc')->get();
         return view('current_customer',['customers'=>$customer,'addreses'=>$addreses]);
     }
 
